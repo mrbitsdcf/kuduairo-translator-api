@@ -18,8 +18,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/", tags=["Root Path"])
 async def index():
-    return { 'status': 'OK' }
+    return {'status': 'OK'}
 
 app.include_router(TranslateRouter, prefix="/translate")

@@ -5,6 +5,7 @@ import re
 df = dd.read_csv("lib/kuduairo_translator/datasets/dataset.csv")
 dataset = dict(zip(df.portuguese, df.kuduairese))
 
+
 def translate(sentence):
     words = re.compile("(\s|\!|\?|\,|\.|$)").split(sentence)
     translated_sentence = ""
@@ -17,7 +18,7 @@ def translate(sentence):
 
         if word in dataset:
             word = dataset[word]
-        
+
         if(current_word_is_uppercase):
             word = word.upper()
         elif(current_word_is_capitalized):
@@ -29,7 +30,7 @@ def translate(sentence):
 
 def strip_accents(text):
     text = unicodedata.normalize('NFD', text)\
-           .encode('ascii', 'ignore')\
-           .decode("utf-8")
+        .encode('ascii', 'ignore')\
+        .decode("utf-8")
 
     return str(text)
